@@ -9,6 +9,7 @@ var wechatConfig = require('./wechat.conf.js')
 var axios = require('axios')
 var sign = require('./sign.js');
 var index = require('./routes/index');
+var one = require('./routes/one');
 
 var app = express();
 
@@ -25,7 +26,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 //app.use('/', index);
-
+app.use('/', one);
 
 app.get('/sign', function(req, res) {
   var url = req.query.url

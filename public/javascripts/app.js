@@ -1,63 +1,24 @@
-var dzwww_appid = '';
-var dzwww_timestamp = '';
-var dzwww_nonceStr = '';
-var dzwww_signature = '';
-var _path = window.location.href;
-_path = "http://w.dzwww.com/zt/dqhy/share.jpg";
-
-function initWx() {
-    var jqxhr = $.ajax({
-        url:"/sign?url="+encodeURIComponent(location.href.split('#')[0]),
-        cache: false
-    })
-    
-    jqxhr.done(function (res) {
-    
-        var wxConf = res.wx
-        /**
-         *配置config信息 
-        */
-        wx.config({
-            debug: true,
-            appId: wxConf.appId,
-            timestamp: wxConf.timestamp,
-            nonceStr: wxConf.nonceStr,
-            signature: wxConf.signature,
-            jsApiList: [
-            'checkJsApi',
-            'onMenuShareTimeline',
-            'onMenuShareAppMessage',
-            'onMenuShareQQ',
-            'onMenuShareWeibo', 
-            'chooseImage',
-            'previewImage',
-            'uploadImage',
-            'downloadImage' 
-            ]
-        });
-    
-        wx.ready(function () {
-
-            wx_data.title = '不忘入党初心，重温入党誓词！';
-            wx_data.desc = '我和党旗合个影';
-            wx_data.imgUrl = _path;
-            wx_data.link = "http://w.dzwww.com/zt/dqhy/index.php",
-            // 分享到朋友圈
-            shareTimeline(wx_data);
-            // 分享给好友
-            shareAppMessage(wx_data);
-            shareQQ(wx_data);
-        });
-    })
-
-    jqxhr.fail(function (err) {
-        alert(JSON.stringify(err))
-    })
-    wx.error(function (res) {
-        console.log(res);
-    });
-}
-
+/**
+ *配置config信息 
+ */
+wx.config({
+    debug: true,
+    appId: dzwww_appid,
+    timestamp: dzwww_timestamp,
+    nonceStr: dzwww_nonceStr,
+    signature: dzwww_signature,
+    jsApiList: [
+    'checkJsApi',
+    'onMenuShareTimeline',
+    'onMenuShareAppMessage',
+    'onMenuShareQQ',
+    'onMenuShareWeibo', 
+    'chooseImage',
+    'previewImage',
+    'uploadImage',
+    'downloadImage' 
+    ]
+});
  var wx_data = {
     title : "分享标题",
     link : "",

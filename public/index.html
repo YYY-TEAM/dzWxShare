@@ -2,218 +2,241 @@
 <html lang="zh-CN">
 
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0,minimal-ui">
+  <title>我和党旗合个影—大众网</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="keywords" content="">
+  <meta name="description" content="">
+  <meta name="filetype" content="0">
+  <meta name="publishedtype" content="1">
+  <meta name="pagetype" content="1">
+  <meta name="catalogs" content="24hwap">
 
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0,minimal-ui">
-	<title>我和党旗合个影—大众网</title>
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="keywords" content="">
-	<meta name="description" content="">
-	<link href="stylesheets/globle-mobile.css" rel="stylesheet" type="text/css">
-	<link href="stylesheets/css.css" rel="stylesheet" type="text/css">
-	<link href="stylesheets/h5.css" rel="stylesheet" type="text/css">
-	<style type="text/css">
-		.btn-top a:hover {
-			filter: alpha(opacity=80);
-			-moz-opacity: 0.8;
-			opacity: 0.8;
-		}
+  <link href="stylesheets/globle-mobile.css" rel="stylesheet" type="text/css" />
+  <link href="stylesheets/css.css" rel="stylesheet" type="text/css" />
+  <link href="stylesheets/h5.css" rel="stylesheet" type="text/css" />
+  <style type="text/css">
+    .btn-top a:hover {
+      filter: alpha(opacity=80);
+      -moz-opacity: 0.8;
+      opacity: 0.8;
+    }
 
-		.btn-top {
-			position: fixed;
-			right: 25px;
-			top: 45px;
-			z-index: 1100;
-			width: 69px;
-			height: 40px;
-		}
+    .btn-top {
+      position: fixed;
+      right: 25px;
+      top: 45px;
+      z-index: 1100;
+      width: 69px;
+      height: 40px;
+    }
 
-		.btn-top a {
-			display: block;
-			width: 69px;
-			height: 40px;
-			cursor: pointer;
-			z-index: 1111;
-			background-size: auto 100%;
-			background-position: center top;
-			background-repeat: no-repeat;
-		}
+    .btn-top a {
+      display: block;
+      width: 69px;
+      height: 40px;
+      cursor: pointer;
+      z-index: 1111;
+      background-size: auto 100%;
+      background-position: center top;
+      background-repeat: no-repeat;
+    }
 
-		.btn-top a:hover {
-			filter: alpha(opacity=80);
-			-moz-opacity: 0.8;
-			opacity: 0.8;
-		}
+    .btn-top a:hover {
+      filter: alpha(opacity=80);
+      -moz-opacity: 0.8;
+      opacity: 0.8;
+    }
 
-		.icon1 {
-			background-image: url(images/none1.png);
-		}
+    .icon1 {
+      background-image: url(http://w.dzwww.com/zt/dqhy/none1.png?v=2017101123);
+    }
 
-		.icon1b {
-			background-image: url(images/voice.png);
-		}
-	</style>
-	<script type="text/javascript">
-		var page = 'index';
-		var joined = '';
-	</script>
-	<script type="text/javascript" src="javascripts/jquery-2.1.3.min.js"></script>
-	<script type="text/javascript" src="javascripts/exif.js"></script>
-	<link rel="stylesheet" href="stylesheets/layer.css" id="layui_layer_skinlayercss" style="">
+    .icon1b {
+      background-image: url(http://w.dzwww.com/zt/dqhy/voice.png?v=20171011);
+    }
+
+  </style>
+  <script type="text/javascript">
+    var page = 'index';
+    var joined = '';
+
+  </script>
+  <script type="text/javascript" src="http://www.dzwww.com/sdstyle/js/jquery-2.1.3.min.js"></script>
+  <script type="text/javascript" src="javascripts/exif.js"></script>
 </head>
 
 <body>
-	<audio id="bgmusic" src="mp3/1/bg.mp3" preload="preload" autoplay="autoplay" loop=""></audio>
+  <audio id="bgmusic" src="mp3/1/bg.mp3" preload="preload" autoplay="autoplay"></audio>
 
-	<div id="player" class="btn-top">
-		<a class="icon1b" id="voiceCmpt"></a>
-	</div>
-	<div id="page1" class="page" name="firstname">
-		<div class="topic1"></div>
-		<div class="topic2"></div>
-		<div class="topic3"></div>
-		<div class="topic4"></div>
-		<div class="arrow" id="nextPage"></div>
-	</div>
+  <div id="player" class="btn-top">
+    <a class="icon1b" id="voiceCmpt"></a>
+  </div>
+  <div id="page1" class="page" name="firstname">
+    <div class="topic1"></div>
+    <div class="topic2"></div>
+    <div class="topic3"></div>
+    <div class="topic4"></div>
+    <div class="arrow" id="nextPage"></div>
+  </div>
 
 
 
-	<script>
-		var u = navigator.userAgent;
-		var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
-		var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
-		var BgMusicCompt = {
-			$el: 'player',
-			init: function (id) {
-				//if(isiOS){
-				//	this.createAudio();
-				//}else{
+  <script>
+    var u = navigator.userAgent;
+    var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+    var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+    var BgMusicCompt = {
+      $el: 'player',
+      init: function (id) {
+        //if(isiOS){
+        //	this.createAudio();
+        //}else{
 
-				this.player = document.getElementById('bgmusic');
-				//}
+        this.player = document.getElementById('bgmusic');
+        //}
 
-				this.player.loop = true;
-				this.player.volume = 0.7;
-				this.addEvent();
-				//this.player.play();	 
+        this.player.loop = true;
+        this.player.volume = 0.7;
+        this.addEvent();
+        //this.player.play();	 
 
-			},
-			bg: {
-				voice: 'http://w.dzwww.com/zt/dqhy/voice.png?v=20171011',
-				mute: 'http://w.dzwww.com/zt/dqhy/none1.png?v=2017101123'
-			},
-			createAudio: function () {
-				this.player = new Audio();
-				this.player.src = $('#bgmusic').attr('src');
-			},
-			mute: function () {
-				$("#" + this.$el + " a").css('background-image', 'url(' + this.bg.mute + ')');
-				//this.setVolume(0);
+      },
+      bg: {
+        voice: 'http://w.dzwww.com/zt/dqhy/voice.png?v=20171011',
+        mute: 'http://w.dzwww.com/zt/dqhy/none1.png?v=2017101123'
+      },
+      createAudio: function () {
+        this.player = new Audio();
+        this.player.src = $('#bgmusic').attr('src');
+      },
+      mute: function () {
+        $("#" + this.$el + " a").css('background-image', 'url(' + this.bg.mute + ')');
+        //this.setVolume(0);
 
-			},
-			voice: function () {
+      },
+      voice: function () {
 
-				$("#" + this.$el + " a").css('background-image', 'url(' + this.bg.voice + ')');
+        $("#" + this.$el + " a").css('background-image', 'url(' + this.bg.voice + ')');
 
-			},
-			pause: function () {
-				this.player.pause();
-			},
-			setVolume: function (volume) {
-				this.player.volume = volume;
-			},
-			play: function () {
-				console.log('this.player:',this.player)
-				this.player.play();
+      },
+      pause: function () {
+        this.player.pause();
+      },
+      setVolume: function (volume) {
+        this.player.volume = volume;
+      },
+      play: function () {
+        this.player.play();
 
-			},
-			toogle: function () {
-				if (this.player.paused == true) {
-					this.voice();
-					this.play();
-					//ShiCiCtl.setVolume(0.7);
-				} else {
-					this.mute();
-					this.pause();
-					//ShiCiCtl.setVolume(0);
-				}
-			},
-			addEvent: function () {
-				var _this = this;
-				$("#" + this.$el + ' a').on('click', function () {
+      },
+      toogle: function () {
+        if (this.player.paused == true) {
+          this.voice();
+          this.play();
+          //ShiCiCtl.setVolume(0.7);
+        } else {
+          this.mute();
+          this.pause();
+          //ShiCiCtl.setVolume(0);
+        }
+      },
+      addEvent: function () {
+        var _this = this;
+        $("#" + this.$el + ' a').on('click', function () {
 
-					_this.toogle();
-				});
-				document.getElementById('nextPage').addEventListener('touchstart', function (e) {
-					window.location.href = "./index2.html";
-				});
-			}
-		};
-
+          _this.toogle();
+        });
+        document.getElementById('nextPage').addEventListener('touchstart', function (e) {
+          window.location.href = "./index2.html";
+        });
+      }
+    };
 
 
 
 
 
-		//var bgm = document.getElementById("bgmusic"); 
 
-		//var bgm_nv = document.getElementById("nvmusic"); 
-		//document.addEventListener("WeixinJSBridgeReady", function () {  
-		//bgm.play();  
+    //var bgm = document.getElementById("bgmusic"); 
 
-		//}, false);
+    //var bgm_nv = document.getElementById("nvmusic"); 
+    //document.addEventListener("WeixinJSBridgeReady", function () {  
+    //bgm.play();  
+
+    //}, false);
 
 
-		var mySwiper = document.getElementById("page1");
-		//滑动处理
-		var G_page = 1;
-		var startX, startY, moveEndX, moveEndY, X, Y;
-		mySwiper.addEventListener('touchstart', function (e) {
+    var mySwiper = document.getElementById("page1");
+    //滑动处理
+    var G_page = 1;
+    var startX, startY, moveEndX, moveEndY, X, Y;
+    mySwiper.addEventListener('touchstart', function (e) {
 
-			startX = e.touches[0].pageX;
-			startY = e.touches[0].pageY;
-		});
-		mySwiper.addEventListener('touchmove', function (e) {
-			e.preventDefault();
-			moveEndX = e.changedTouches[0].pageX;
-			moveEndY = e.changedTouches[0].pageY;
-			X = moveEndX - startX;
-			Y = moveEndY - startY;
-			if (Y < -100) {
+      startX = e.touches[0].pageX;
+      startY = e.touches[0].pageY;
+    });
+    mySwiper.addEventListener('touchmove', function (e) {
+      e.preventDefault();
+      moveEndX = e.changedTouches[0].pageX;
+      moveEndY = e.changedTouches[0].pageY;
+      X = moveEndX - startX;
+      Y = moveEndY - startY;
+      if (Y < -100) {
 
-				G_page = 2;
-				//bgm.pause(); 
-				//	 var bgm_nan = document.getElementById("nanmusic"); 
-				//	document.addEventListener("WeixinJSBridgeReady", function () {  
-				//		bgm_nan.play();  
-				//	}, false);
-				//ShiCiCtl.nanRead();
-			}
-		});
-		mySwiper.addEventListener('touchend', function (e) {
-			e.preventDefault();
-			moveEndX = e.changedTouches[0].pageX;
-			moveEndY = e.changedTouches[0].pageY;
-			X = moveEndX - startX;
-			if (G_page == 2) {
-				//ShiCiCtl.nanRead();
-				window.location.href = 'index2.html';
-			}
-		});
-	</script>
-	<script type="text/javascript" src="//res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
-	<script type="text/javascript" src="javascripts/app.js"></script>
-	<script type="text/javascript">
-	
-		BgMusicCompt.init();
-		BgMusicCompt.play();
+        G_page = 2;
+        //bgm.pause(); 
+        //	 var bgm_nan = document.getElementById("nanmusic"); 
+        //	document.addEventListener("WeixinJSBridgeReady", function () {  
+        //		bgm_nan.play();  
+        //	}, false);
+        //ShiCiCtl.nanRead();
+      }
+    });
+    mySwiper.addEventListener('touchend', function (e) {
+      e.preventDefault();
+      moveEndX = e.changedTouches[0].pageX;
+      moveEndY = e.changedTouches[0].pageY;
+      X = moveEndX - startX;
+      if (G_page == 2) {
+        //ShiCiCtl.nanRead();
+        window.location.href = './index2.html';
+      }
+    });
 
-		initWx()
+  </script>
+  <script type="text/javascript" src="//res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+  <script type="text/javascript">
+    var str = '<script type="text/javascript" src="http://ulsee.club:7100/sign.do?url=' + encodeURIComponent(window
+      .location.href) + '&random=' + Math.random() + '"\/><\/script>';
+    str += '<script type="text/javascript" src="javascripts/app.js"><\/script>';
+    document.write(str);
+    var _path = window.location.href;
+    _path = "http://w.dzwww.com/zt/dqhy/share.jpg";
 
-	</script>
-	<script type="text/javascript" src="javascripts/layer.js"></script>
-	<script type="text/javascript" src="javascripts/main.js"></script>
+    BgMusicCompt.init();
+    BgMusicCompt.play();
+    wx.ready(function () {
 
+      BgMusicCompt.play();
+      wx_data.title = '不忘入党初心，重温入党誓词！';
+      wx_data.desc = '我和党旗合个影';
+      wx_data.imgUrl = _path;
+      wx_data.link = "http://w.dzwww.com/zt/dqhy/index.php",
+        // 分享到朋友圈
+        shareTimeline(wx_data);
+      // 分享给好友
+      shareAppMessage(wx_data);
+      shareQQ(wx_data);
+    });
+    wx.error(function (res) {
+      console.log(res);
+    });
+
+  </script>
+  <script type="text/javascript" src="avascripts/layer.js"></script>
+  <script type="text/javascript" src="javascripts/main.js"></script>
 </body>
 
 </html>
