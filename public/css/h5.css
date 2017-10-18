@@ -1,0 +1,267 @@
+@-ms-keyframes topic1{
+	from{ filter:alpha(opacity=0); opacity:0; top:-30%; }
+	to{ }
+}
+@-moz-keyframes topic1{
+	from{ filter:alpha(opacity=0); opacity:0; top:-30%; }
+	to{ }
+}
+@-o-keyframes topic1{
+	from{ filter:alpha(opacity=0); opacity:0; top:-30%; }
+	to{ }
+}
+@-webkit-keyframes topic1{
+	from{ filter:alpha(opacity=0); opacity:0; top:-30%; }
+	to{ }
+}
+@keyframes topic1{
+	from{ filter:alpha(opacity=0); opacity:0; top:-30%; }
+	to{ }
+}
+
+#page1 .topic1{
+	animation:'topic1' 0.6s ease-in-out 0s normal;
+	-ms-animation:topic1 0.6s ease-in-out 0s normal;
+	-moz-animation:topic1 0.6s ease-in-out 0s normal;
+	-o-animation:'topic1' 0.6s ease-in-out 0s normal;
+	-webkit-animation:'topic1' 0.6s ease-in-out 0s normal;
+}
+
+
+@-ms-keyframes topic2{
+	from{ filter:alpha(opacity=0); opacity:0; left:100%; }
+	50%{ filter:alpha(opacity=0); opacity:0; left:100%; }
+	to{ }
+}
+@-moz-keyframes topic2{
+	from{ filter:alpha(opacity=0); opacity:0; left:100%; }
+	50%{ filter:alpha(opacity=0); opacity:0; left:100%; }
+	to{ }
+}
+@-o-keyframes topic2{
+	from{ filter:alpha(opacity=0); opacity:0; left:100%; }
+	50%{ filter:alpha(opacity=0); opacity:0; left:100%; }
+	to{ }
+}
+@-webkit-keyframes topic2{
+	from{ filter:alpha(opacity=0); opacity:0; left:100%; }
+	50%{ filter:alpha(opacity=0); opacity:0; left:100%; }
+	to{ }
+}
+@keyframes topic2{
+	from{ filter:alpha(opacity=0); opacity:0; left:100%; }
+	50%{ filter:alpha(opacity=0); opacity:0; left:100%; }
+	to{ }
+}
+
+#page1 .topic2{
+	animation:'topic2' 1.0s ease-in-out 0s normal;
+	-ms-animation:topic2 1.0s ease-in-out 0s normal;
+	-moz-animation:topic2 1.0s ease-in-out 0s normal;
+	-o-animation:'topic2' 1.0s ease-in-out 0s normal;
+	-webkit-animation:'topic2' 1.0s ease-in-out 0s normal;
+}
+
+
+@-ms-keyframes topic3{
+	from{ filter:alpha(opacity=0); opacity:0; left:-75%; }
+	50%{ filter:alpha(opacity=0); opacity:0; left:-75%; }
+	to{ }
+}
+@-moz-keyframes topic3{
+	from{ filter:alpha(opacity=0); opacity:0; left:-75%; }
+	50%{ filter:alpha(opacity=0); opacity:0; left:-75%; }
+	to{ }
+}
+@-o-keyframes topic3{
+	from{ filter:alpha(opacity=0); opacity:0; left:-75%; }
+	50%{ filter:alpha(opacity=0); opacity:0; left:-75%; }
+	to{ }
+}
+@-webkit-keyframes topic3{
+	from{ filter:alpha(opacity=0); opacity:0; left:-75%; }
+	50%{ filter:alpha(opacity=0); opacity:0; left:-75%; }
+	to{ }
+}
+@keyframes topic3{
+	from{ filter:alpha(opacity=0); opacity:0; left:-75%; }
+	50%{ filter:alpha(opacity=0); opacity:0; left:-75%; }
+	to{ }
+}
+
+#page1 .topic3{
+	animation:'topic3' 1.0s ease-in-out 0s normal;
+	-ms-animation:topic3 1.0s ease-in-out 0s normal;
+	-moz-animation:topic3 1.0s ease-in-out 0s normal;
+	-o-animation:'topic3' 1.0s ease-in-out 0s normal;
+	-webkit-animation:'topic3' 1.0s ease-in-out 0s normal;
+}
+
+
+@-ms-keyframes topic4{
+	from{ filter:alpha(opacity=0); opacity:0; top:45%; }
+	60%{ filter:alpha(opacity=0); opacity:0; top:45%; }
+	to{ }
+}
+@-moz-keyframes topic4{
+	from{ filter:alpha(opacity=0); opacity:0; top:45%; }
+	60%{ filter:alpha(opacity=0); opacity:0; top:45%; }
+	to{ }
+}
+@-o-keyframes topic4{
+	from{ filter:alpha(opacity=0); opacity:0; top:45%; }
+	60%{ filter:alpha(opacity=0); opacity:0; top:45%; }
+	to{ }
+}
+@-webkit-keyframes topic4{
+	from{ filter:alpha(opacity=0); opacity:0; top:45%; }
+	60%{ filter:alpha(opacity=0); opacity:0; top:45%; }
+	to{ }
+}
+@keyframes topic4{
+	from{ filter:alpha(opacity=0); opacity:0; top:45%; }
+	60%{ filter:alpha(opacity=0); opacity:0; top:45%; }
+	to{ }
+}
+
+#page1 .topic4{
+	animation:'topic4' 1.5s ease-in-out 0s normal;
+	-ms-animation:topic4 1.5s ease-in-out 0s normal;
+	-moz-animation:topic4 1.5s ease-in-out 0s normal;
+	-o-animation:'topic4' 1.5s ease-in-out 0s normal;
+	-webkit-animation:'topic4' 1.5s ease-in-out 0s normal;
+}
+
+
+@-ms-keyframes arrow{
+	from{  }
+	50%{ bottom:8.4%; }
+	to{ }
+}
+@-moz-keyframes arrow{
+	from{  }
+	50%{ bottom:8.4%; }
+	to{ }
+}
+@-o-keyframes arrow{
+	from{  }
+	50%{ bottom:8.4%; }
+	to{ }
+}
+@-webkit-keyframes arrow{
+	from{  }
+	50%{ bottom:8.4%; }
+	to{ }
+}
+@keyframes arrow{
+	from{  }
+	50%{ bottom:8.4%; }
+	to{ }
+}
+
+.arrow{
+	animation:'arrow' 1.0s linear 0s infinite;
+	-ms-animation:arrow 1.0s linear 0s infinite;
+	-moz-animation:arrow 1.0s linear 0s infinite;
+	-o-animation:'arrow' 1.0s linear 0s infinite;
+	-webkit-animation:'arrow' 1.0s linear 0s infinite;
+}
+
+@-ms-keyframes btn{
+	from{  }
+	50%{ top:73.5%; }
+	to{ }
+}
+@-moz-keyframes btn{
+	from{  }
+	50%{ top:73.5%; }
+	to{ }
+}
+@-o-keyframes btn{
+	from{  }
+	50%{ top:73.5%; }
+	to{ }
+}
+@-webkit-keyframes btn{
+	from{  }
+	50%{ top:73.5%; }
+	to{ }
+}
+@keyframes btn{
+	from{  }
+	50%{ top:73.5%; }
+	to{ }
+}
+
+#page2 .btn{
+	animation:'btn' 1.0s linear 0s infinite;
+	-ms-animation:btn 1.0s linear 0s infinite;
+	-moz-animation:btn 1.0s linear 0s infinite;
+	-o-animation:'btn' 1.0s linear 0s infinite;
+	-webkit-animation:'btn' 1.0s linear 0s infinite;
+}
+
+
+@-ms-keyframes photo-in{
+	from{ }
+	to{ top:-20%; }
+}
+@-moz-keyframes photo-in{
+	from{ }
+	to{ top:-20%; }
+}
+@-o-keyframes photo-in{
+	from{ }
+	to{ top:-20%; }
+}
+@-webkit-keyframes photo-in{
+	from{ }
+	to{ top:-20%; }
+}
+@keyframes photo-in{
+	from{ }
+	to{ top:-20%; }
+}
+
+#page3 .box3.in{
+	animation:'photo-in' 1.0s linear 0s forwards;
+	-ms-animation:photo-in 1.0s linear 0s forwards;
+	-moz-animation:photo-in 1.0s linear 0s forwards;
+	-o-animation:'photo-in' 1.0s linear 0s forwards;
+	-webkit-animation:'photo-in' 1.0s linear 0s forwards;
+}
+
+
+@-ms-keyframes photo-out{
+	from{ top:-89.09%; }
+	20%{ top:-89.09%; }
+	to{ }
+}
+@-moz-keyframes photo-out{
+	from{ top:-89.09%; }
+	20%{ top:-89.09%; }
+	to{ }
+}
+@-o-keyframes photo-out{
+	from{ top:-89.09%; }
+	20%{ top:-89.09%; }
+	to{ }
+}
+@-webkit-keyframes photo-out{
+	from{ top:-89.09%; }
+	20%{ top:-89.09%; }
+	to{ }
+}
+@keyframes photo-out{
+	from{ top:-89.09%; }
+	20%{ top:-89.09%; }
+	to{ }
+}
+
+#page4 .box3{
+	animation:'photo-out' 1.5s linear 0s forwards;
+	-ms-animation:photo-out 1.5s linear 0s forwards;
+	-moz-animation:photo-out 1.5s linear 0s forwards;
+	-o-animation:'photo-out' 1.5s linear 0s forwards;
+	-webkit-animation:'photo-out' 1.5s linear 0s forwards;
+}

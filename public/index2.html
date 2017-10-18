@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0,minimal-ui">
+	<title>我和党旗合个影—大众网</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<link href="stylesheets/globle-mobile.css" rel="stylesheet" type="text/css">
+	<link href="stylesheets/css.css" rel="stylesheet" type="text/css">
+	<link href="stylesheets/h5.css" rel="stylesheet" type="text/css">
+	<style type="text/css">
+		.btn-top a:hover {
+			filter: alpha(opacity=80);
+			-moz-opacity: 0.8;
+			opacity: 0.8;
+		}
+
+		.btn-top {
+			position: fixed;
+			right: 25px;
+			top: 45px;
+			z-index: 1100;
+			width: 69px;
+			height: 40px;
+		}
+
+		.btn-top a {
+			display: block;
+			width: 69px;
+			height: 40px;
+			cursor: pointer;
+			z-index: 1111;
+			background-size: auto 100%;
+			background-position: center top;
+			background-repeat: no-repeat;
+		}
+
+		.btn-top a:hover {
+			filter: alpha(opacity=80);
+			-moz-opacity: 0.8;
+			opacity: 0.8;
+		}
+
+		.icon1 {
+			background-image: url(http://w.dzwww.com/zt/dqhy/none1.png?v=2017101123);
+		}
+
+		.icon1b {
+			background-image: url(http://w.dzwww.com/zt/dqhy/voice.png?v=20171011);
+		}
+	</style>
+	<script type="text/javascript">
+		var page = 'index';
+		var joined = '';
+	</script>
+	<script type="text/javascript" src="javascripts/jquery-2.1.3.min.js"></script>
+	<script type="text/javascript" src="javascripts/exif.js"></script>
+	<link rel="stylesheet" href="stylesheets/layer.css" id="layui_layer_skinlayercss" style="">
+</head>
+
+<body>
+	<audio id="bgmusic" src="mp3/2/bg.mp3" preload="preload"></audio>
+	<audio id="nvmusic" src="mp3/2/nv.mp3" preload="preload"></audio>
+	<audio id="nanmusic" src="mp3/2/nan.mp3" preload="preload"></audio>
+	<div id="player" class="btn-top">
+		<a class="icon1b"></a>
+	</div>
+
+	<div id="page2" class="page">
+		<div class="tab">
+			<a href="#" id="nanmusicView" class="circle1  on"></a><a href="#"
+			    id="nvmusicView" class="circle2"></a>
+		</div>
+		<a href="#" class="btn" id="nextPage"><img src="images/page2-btn.png"></a>
+	</div>
+
+
+
+	<script>
+		var u = navigator.userAgent;
+		var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+		var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+
+		function VoiceCompt(options) {
+			this.viewId = options.viewId;
+			this.playerId = options.playerId;
+			this.init();
+		};
+		VoiceCompt.prototype = {
+			init: function () {
+				this.player = $("#" + this.playerId).get(0);
+				this.addEvent();
+			},
+			read: function () {
+				$("#" + this.viewId).addClass("on");
+				this.player.play();
+			},
+			pause: function () {
+				$("#" + this.viewId).removeClass("on");
+				this.player.pause();
+			},
+			paused: function () {
+				return this.player.paused;
+			},
+			setVolume: function (volume) {
+				this.player.volume = volume;
+			},
+			addEvent: function () {
+				var _this = this;
+				this.player.addEventListener('ended', function () {
+					//BgMusicCompt.play();
+					_this.pause();
+					BgMusicCompt.mute();
+				});
+			}
+		};
+		var ShiCiCtl = {
+			init: function () {
+				this.addEvent();
+				this.nv = new VoiceCompt({
+					viewId: 'nvmusicView',
+					playerId: 'nvmusic'
+				});
+				this.nan = new VoiceCompt({
+					viewId: 'nanmusicView',
+					playerId: 'nanmusic'
+				});
+
+			},
+			toggleNan: function () {
+				if (this.nan.paused()) {
+					this.nanRead();
+					BgMusicCompt.voice();
+				} else {
+					this.nan.pause();
+					BgMusicCompt.mute();
+				}
+			},
+			setVolume: function (volume) {
+				this.nv.setVolume(volume);
+				this.nan.setVolume(volume);
+			},
+			toggleNv: function () {
+				if (this.nv.paused()) {
+					this.nvRead();
+					BgMusicCompt.voice();
+				} else {
+					this.nv.pause();
+					BgMusicCompt.mute();
+				}
+			},
+			state: 'kong',
+			nanRead: function () {
+
+				this.state = 'nan';
+				this.nv.pause();
+				this.nan.read();
+			},
+			nvRead: function () {
+				this.state = 'nv';
+				this.nan.pause();
+				this.nv.read();
+			},
+			pause: function () {
+				if (this.state == 'nan') {
+					this.nan.pause();
+				} else {
+					this.nv.pause();
+				}
+			},
+			getState: function () {
+				if (this.state == 'nan') {
+					return this.nan.paused();
+				} else {
+					return this.nv.paused();
+				}
+			},
+			play: function () {
+				if (this.state == 'nan') {
+					this.nanRead();
+				} else {
+					this.nvRead();
+				}
+			},
+			addEvent: function () {
+				var _this = this;
+				//$("#nvmusicView").on('click',function(e){
+				//$("#page2 a.circle1").on("click",function(e){
+				document.getElementById('nvmusicView').addEventListener('touchstart', function (e) {
+					_this.toggleNv();
+				});
+				document.getElementById('nanmusicView').addEventListener('touchstart', function (e) {
+					_this.toggleNan();
+				});
+			}
+
+		};
+
+
+		ShiCiCtl.init();
+		var BgMusicCompt = {
+			$el: 'player',
+			init: function (id) {
+				//if(isiOS){
+				//	this.createAudio();
+				//}else{
+				this.addEvent();
+				//this.player.play();	 
+			},
+			bg: {
+				voice: 'http://w.dzwww.com/zt/dqhy/voice.png?v=20171011',
+				mute: 'http://w.dzwww.com/zt/dqhy/none1.png?v=2017101123'
+			},
+			createAudio: function () {
+				this.player = new Audio();
+				this.player.src = $('#bgmusic').attr('src');
+			},
+			mute: function () {
+				$("#" + this.$el + " a").css('background-image', 'url(' + this.bg.mute + ')');
+				//this.setVolume(0);
+
+			},
+			voice: function () {
+				$("#" + this.$el + " a").css('background-image', 'url(' + this.bg.voice + ')');
+
+			},
+			pause: function () {
+				ShiCiCtl.pause();
+			},
+			setVolume: function (volume) {
+				this.player.volume = volume;
+			},
+			play: function () {
+				ShiCiCtl.play();
+			},
+			toogle: function () {
+				if (ShiCiCtl.getState() == true) {
+					this.voice();
+					this.play();
+					//ShiCiCtl.setVolume(0.7);
+				} else {
+					this.mute();
+					this.pause();
+					//ShiCiCtl.setVolume(0);
+				}
+			},
+			addEvent: function () {
+				var _this = this;
+				$("#" + this.$el + ' a').on('click', function (e) {
+					e.preventDefault();
+					_this.toogle();
+				});
+				document.getElementById('nextPage').addEventListener('touchstart', function (e) {
+					window.location.href = "./index3.html";
+				});
+			}
+		};
+
+		BgMusicCompt.init();
+		//var bgm = document.getElementById("bgmusic"); 
+
+		//var bgm_nv = document.getElementById("nvmusic"); 
+		//document.addEventListener("WeixinJSBridgeReady", function () {  
+		//bgm.play();  
+
+		//}, false);
+
+		var mySwiper = document.getElementById("page2");
+		//滑动处理
+		var G_page = 1;
+		var startX, startY, moveEndX, moveEndY, X, Y;
+		mySwiper.addEventListener('touchstart', function (e) {
+			e.preventDefault();
+			startX = e.touches[0].pageX;
+			startY = e.touches[0].pageY;
+		});
+		mySwiper.addEventListener('touchmove', function (e) {
+			e.preventDefault();
+			moveEndX = e.changedTouches[0].pageX;
+			moveEndY = e.changedTouches[0].pageY;
+			X = moveEndX - startX;
+			Y = moveEndY - startY;
+			if (Y < -100) {
+
+				G_page = 2;
+				//bgm.pause(); 
+				//	 var bgm_nan = document.getElementById("nanmusic"); 
+				//	document.addEventListener("WeixinJSBridgeReady", function () {  
+				//		bgm_nan.play();  
+				//	}, false);
+				//ShiCiCtl.nanRead();
+			}
+		});
+		mySwiper.addEventListener('touchend', function (e) {
+			e.preventDefault();
+			moveEndX = e.changedTouches[0].pageX;
+			moveEndY = e.changedTouches[0].pageY;
+			X = moveEndX - startX;
+			if (G_page == 2) {
+				//ShiCiCtl.nanRead();
+				window.location.href = "index3.html";
+				//$('#nanmusicView').trigger('click');
+			}
+		});
+	</script>
+	<script type="text/javascript" src="//res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+	<script type="text/javascript" src="javascripts/app.js"></script>
+	<script type="text/javascript">
+		var _path = window.location.href;
+		_path = "http://w.dzwww.com/zt/dqhy/share.jpg";
+
+
+		ShiCiCtl.nanRead();
+
+		initWx()
+		
+	</script>
+	<script type="text/javascript" src="javascripts/layer.js"></script>
+	<script type="text/javascript" src="javascripts/main.js"></script>
+
+
+</body>
+
+</html>

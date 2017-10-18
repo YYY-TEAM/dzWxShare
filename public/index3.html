@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0,minimal-ui">
+	<title>我和党旗合个影—大众网</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<link href="stylesheets/globle-mobile.css" rel="stylesheet" type="text/css">
+	<link href="stylesheets/css.css" rel="stylesheet" type="text/css">
+	<link href="stylesheets/h5.css" rel="stylesheet" type="text/css">
+	<style type="text/css">
+		.btn-top a:hover {
+			filter: alpha(opacity=80);
+			-moz-opacity: 0.8;
+			opacity: 0.8;
+		}
+
+		.btn-top {
+			position: fixed;
+			right: 25px;
+			top: 45px;
+			z-index: 1100;
+			width: 69px;
+			height: 40px;
+		}
+
+		.btn-top a {
+			display: block;
+			width: 69px;
+			height: 40px;
+			cursor: pointer;
+			z-index: 1111;
+			background-size: auto 100%;
+			background-position: center top;
+			background-repeat: no-repeat;
+		}
+
+		.btn-top a:hover {
+			filter: alpha(opacity=80);
+			-moz-opacity: 0.8;
+			opacity: 0.8;
+		}
+
+		.icon1 {
+			background-image: url(http://w.dzwww.com/zt/dqhy/none1.png?v=2017101123);
+		}
+
+		.icon1b {
+			background-image: url(http://w.dzwww.com/zt/dqhy/voice.png?v=20171011);
+		}
+	</style>
+	<script type="text/javascript">
+		var page = 'index';
+		var joined = '';
+	</script>
+	<script type="text/javascript" src="javascripts/jquery-2.1.3.min.js"></script>
+	<script type="text/javascript" src="javascripts/exif.js"></script>
+	<link rel="stylesheet" href="stylesheets/layer.css" id="layui_layer_skinlayercss" style="">
+</head>
+
+<body>
+	<audio id="bgmusic" src="mp3/3/bg.mp3" preload="preload" loop=""></audio>
+
+	<div id="player" class="btn-top">
+		<a class="icon1b" style="background-image: url(images/none1.png);"></a>
+	</div>
+
+
+
+	<div id="page3" class="page">
+		<div class="box1"></div>
+		<div class="box2"></div>
+		<div class="box3">
+			<!-- 当点击下方按钮时class="box3 in",动画持续1秒 -->
+			<a href="#" class="plus"></a>
+			<div class="photo" style="display:none;"><img id="showPanel" src="images/page3-photo2.jpg"></div>
+			<!-- 添加照片后显示 -->
+			<input type="file" id="uploadFile" accept="image/*">
+			<div class="tab" id="sex">
+				<a href="#" data-value="4" class="sex1 on"></a><a href="#"
+				    data-value="3" class="sex2"></a>
+			</div>
+		</div>
+		<a href="#" class="btn"><img src="images/page3-btn.png"></a>
+	</div>
+	<div id="page4" class="page" style="display:none;">
+		<div class="box1"></div>
+		<div class="box2"></div>
+		<div class="box3">
+			<div class="photo"><img src="images/page4-photo1.jpg"></div>
+			<div class="bottom" style="display:none;"><img src="images/page4-bottom.jpg"></div>
+		</div>
+		<div class="text"><img src="images/page4-text.png"></div>
+		<a href="#" class="btn btn1"><img src="images/page4-btn1.png"></a>
+		<a href="#" class="btn btn2"><img src="images/page4-btn2.png"></a>
+	</div>
+	<script>
+		var u = navigator.userAgent;
+		var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+		var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+		var Xut = {};
+		var isAudio = false;
+		var audioOnce = null;
+		var chatid = '';
+
+		window.URL = window.URL || window.webkitURL;
+		var Orientation = "";
+
+		function rotateImg(img, direction, canvas, expectWidth, expectHeight) {
+			//alert(img);
+			//最小与最大旋转方向，图片旋转4次后回到原方向  
+			var min_step = 0;
+			var max_step = 3;
+			//var img = document.getElementById(pid);  
+			if (img == null) return;
+			//img的高度和宽度不能在img元素隐藏后获取，否则会出错  
+			var width = expectWidth; //img.width; //
+			var height = expectHeight; // img.height;//
+			// alert(width+';'+height);
+			//var step = img.getAttribute('step');  
+			var step = 2;
+			if (step == null) {
+				step = min_step;
+			}
+			if (direction == 'right') {
+				step++;
+				//旋转到原位置，即超过最大值  
+				step > max_step && (step = min_step);
+			} else {
+				step--;
+				step < min_step && (step = max_step);
+			}
+			//img.setAttribute('step', step);  
+			/*var canvas = document.getElementById('pic_' + pid);  
+			if (canvas == null) {  
+			    img.style.display = 'none';  
+			    canvas = document.createElement('canvas');  
+			    canvas.setAttribute('id', 'pic_' + pid);  
+			    img.parentNode.appendChild(canvas);  
+			}  */
+			//旋转角度以弧度值为参数  
+			var degree = step * 90 * Math.PI / 180;
+			var ctx = canvas.getContext('2d');
+			switch (step) {
+				case 0:
+					canvas.width = width;
+					canvas.height = height;
+					ctx.drawImage(img, 0, 0, expectWidth, expectHeight);
+					break;
+				case 1:
+					canvas.width = height;
+					canvas.height = width;
+					ctx.rotate(degree);
+					ctx.drawImage(img, 0, -height, expectWidth, expectHeight);
+					break;
+				case 2:
+					canvas.width = width;
+					canvas.height = height;
+					ctx.rotate(degree);
+					ctx.drawImage(img, -width, -height, expectWidth, expectHeight);
+					break;
+				case 3:
+					canvas.width = height;
+					canvas.height = width;
+					ctx.rotate(degree);
+					ctx.drawImage(img, -width, 0, expectWidth, expectHeight);
+					break;
+			}
+		}
+		var ImgUploadHandler = {
+			handleFiles: function (file) {
+				var files = file.files,
+					img = new Image();
+				var dtd = $.Deferred();
+				var _this = this;
+
+				EXIF.getData(files[0], function () {
+					// alert(EXIF.pretty(this));
+					EXIF.getAllTags(this);
+					//alert(EXIF.getTag(this, 'Orientation')); 
+					window.Orientation = EXIF.getTag(this, 'Orientation');
+					console.log(window.Orientation);
+					//return;
+				});
+				if (window.URL) {
+					//File API
+					console.log(files[0].name + "," + files[0].size + " bytes");
+					img.src = window.URL.createObjectURL(files[0]); //创建一个object URL，并不是你的本地路径
+					img.width = 200;
+					img.onload = function (e) {
+						_this.drawImg(this, dtd);
+						window.URL.revokeObjectURL(this.src); //图片加载后，释放object URL
+					}
+
+				} else if (window.FileReader) {
+					//opera不支持createObjectURL/revokeObjectURL方法。我们用FileReader对象来处理
+					var reader = new FileReader();
+					reader.readAsDataURL(files[0]);
+					reader.onload = function (e) {
+						console.log(files[0].name + "," + e.total + " bytes");
+						img.src = this.result;
+						img.width = 200;
+						_this.drawImg(this, dtd);
+					}
+				} else {
+					//ie
+					file.select();
+					file.blur();
+					var nfile = document.selection.createRange().text;
+					document.selection.empty();
+					img.src = nfile;
+					img.width = 200;
+					img.onload = function () {
+						console.log(nfile + "," + img.fileSize + " bytes");
+						_this.drawImg(this, dtd);
+					}
+				}
+				return dtd.promise();
+			},
+			drawImg: function (img, dtd) {
+				var expectWidth = img.naturalWidth;
+				var expectHeight = img.naturalHeight;
+				var base64 = null;
+				var canvas = document.createElement("canvas");
+				var ctx = canvas.getContext("2d");
+				canvas.width = expectWidth;
+				canvas.height = expectHeight;
+				ctx.clearRect(0, 0, canvas.width, canvas.height);
+				ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+				if (navigator.userAgent.match(/iphone/i)) {
+					// console.log('iphone');
+					//alert(expectWidth + ',' + expectHeight);
+					//如果方向角不为1，都需要进行旋转 added by lzk
+					if (window.Orientation != "" && window.Orientation != 1) {
+						// alert('旋转处理');
+						switch (window.Orientation) {
+							case 6: //需要顺时针（向左）90度旋转
+								// alert('需要顺时针（向左）90度旋转');
+								rotateImg(img, 'left', canvas, expectWidth, expectHeight);
+								break;
+							case 8: //需要逆时针（向右）90度旋转
+								// alert('需要顺时针（向右）90度旋转');
+								rotateImg(img, 'right', canvas, expectWidth, expectHeight);
+								break;
+							case 3: //需要180度旋转
+								// alert('需要180度旋转');
+								rotateImg(img, 'right', canvas, expectWidth, expectHeight); //转两次
+								rotateImg(img, 'right', canvas, expectWidth, expectHeight);
+								break;
+						}
+					}
+
+					/*var mpImg = new MegaPixImage(image);
+					mpImg.render(canvas, {
+						maxWidth: 800,
+						maxHeight: 1200,
+						quality: 0.6,
+						orientation: 8
+					});*/
+
+				} else if (navigator.userAgent.match(/Android/i)) { // 修复android
+					//var encoder = new JPEGEncoder();
+
+					//base64 = encoder.encode(ctx.getImageData(0, 0, expectWidth, expectHeight), 80);
+				} else {
+					//alert(Orientation);
+					if (Orientation != "" && Orientation != 1) {
+						//alert('旋转处理');
+						switch (Orientation) {
+							case 6: //需要顺时针（向左）90度旋转
+								// alert('需要顺时针（向左）90度旋转');
+								rotateImg(img, 'left', canvas, expectWidth, expectHeight);
+								break;
+							case 8: //需要逆时针（向右）90度旋转
+								// alert('需要顺时针（向右）90度旋转');
+								rotateImg(img, 'right', canvas, expectWidth, expectHeight);
+								break;
+							case 3: //需要180度旋转
+								// alert('需要180度旋转');
+								rotateImg(img, 'right', canvas, expectWidth, expectHeight); //转两次
+								rotateImg(img, 'right', canvas, expectWidth, expectHeight);
+								break;
+						}
+					}
+
+
+				}
+				base64 = canvas.toDataURL("image/jpeg", 0.6);
+				dtd.resolve(base64);
+
+			}
+		};
+		var CombineCtl = {
+			init: function (options) {
+				this.p = options.p;
+				this.addEvent();
+			},
+			subAction: function () {
+				var data = this.getData();
+				if (!data.swap_photo) {
+					alert("请选择图片完毕后点击提交");
+					return false;
+				}
+				var form1 = new FormData();
+				var _this = this;
+				form1.append('template_id', data.template_id);
+				form1.append('swap_photo', data.swap_photo);
+				var dtd = $.ajax({
+					url: 'http://TODOIP/swap', //
+					method: 'POST',
+					type: 'POST',
+					processData: false,
+					contentType: false,
+					data: form1
+				});
+				dtd.done(function (res) {
+					console.log(res);
+					_this.success('http://TODOIP/' + res.data.result_photo_path);
+				}).fail(function (err) {
+					console.log("fail");
+					alert("图像无法识别，请选择有正脸照的图片上传:"+JSON.stringify(err));
+				});
+			},
+			success: function (photoPath) {
+				this.p.res(photoPath);
+				//合成图片成功
+				// $.post("./index.php?c=submits", {
+				// 	photo: photoPath
+				// }, function (data) {});
+			},
+			getData: function () {
+				var data = {};
+				data.template_id = $("#sex a.on").attr('data-value');
+				data.swap_photo = $("#showPanel").attr("src").split(',')[1];
+
+				return data;
+			},
+			addEvent: function () {
+				var _this = this;
+				$("#sex a").on('click', function (e) {
+					e.preventDefault();
+					$("#sex a").removeClass("on");
+					$(e.currentTarget).addClass("on");
+				});
+				$("#uploadFile").on("change", function (e) {
+					var dtd = ImgUploadHandler.handleFiles(e.currentTarget);
+					dtd.done(function (base64) {
+						$("#showPanel").attr("src", base64);
+						$("#showPanel").parent().show();
+					});
+				});
+				$("#page3 a.btn").on("click", function (e) {
+					e.preventDefault();
+					_this.subAction();
+				});
+			}
+		};
+
+
+		var BgMusicCompt = {
+			$el: 'player',
+			init: function (id) {
+				//if(isiOS){
+				//	this.createAudio();
+				//}else{
+
+				this.player = document.getElementById('bgmusic');
+				//}
+
+				this.player.loop = true;
+				this.player.volume = 0.7;
+				this.addEvent();
+				//this.player.play();	 
+
+			},
+			bg: {
+				voice: 'http://w.dzwww.com/zt/dqhy/voice.png?v=20171011',
+				mute: 'http://w.dzwww.com/zt/dqhy/none1.png?v=2017101123'
+			},
+			createAudio: function () {
+				this.player = new Audio();
+				this.player.src = $('#bgmusic').attr('src');
+			},
+			mute: function () {
+				$("#" + this.$el + " a").css('background-image', 'url(' + this.bg.mute + ')');
+				//this.setVolume(0);
+
+			},
+			voice: function () {
+
+				$("#" + this.$el + " a").css('background-image', 'url(' + this.bg.voice + ')');
+
+			},
+			pause: function () {
+				this.player.pause();
+			},
+			setVolume: function (volume) {
+				this.player.volume = volume;
+			},
+			play: function () {
+				this.player.play();
+
+			},
+			toogle: function () {
+				if (this.player.paused == true) {
+					this.voice();
+					this.play();
+					//ShiCiCtl.setVolume(0.7);
+				} else {
+					this.mute();
+					this.pause();
+					//ShiCiCtl.setVolume(0);
+				}
+			},
+			addEvent: function () {
+				var _this = this;
+				$("#" + this.$el + ' a').on('click', function () {
+
+					_this.toogle();
+				});
+
+			}
+		};
+
+		function VoiceCompt(options) {
+			this.viewId = options.viewId;
+			this.playerId = options.playerId;
+			this.init();
+		};
+		VoiceCompt.prototype = {
+			init: function () {
+				this.player = $("#" + this.playerId).get(0);
+				this.addEvent();
+			},
+			createAudio: function () {
+				this.player = new Audio();
+				this.player.src = $("#" + this.playerId).attr('src');
+
+				//$("#"+this.playerId).get(0);
+			},
+			read: function () {
+				$("#" + this.viewId).addClass("on");
+				this.player.play();
+			},
+			pause: function () {
+				$("#" + this.viewId).removeClass("on");
+				this.player.pause();
+			},
+			paused: function () {
+				return this.player.paused;
+			},
+			setVolume: function (volume) {
+				this.player.volume = volume;
+			},
+			addEvent: function () {
+				var _this = this;
+				this.player.addEventListener('ended', function () {
+					BgMusicCompt.play();
+					_this.pause();
+				});
+			}
+		};
+
+
+		var StageCtl = {
+			init: function () {
+				CombineCtl.init({
+					p: this
+				});
+
+				this.addEvent();
+			},
+			show: function (page) {
+				if (!page) {
+					page = "page1"
+				};
+				$("#showPanel").attr("src", "");
+				$("#showPanel").parent().hide();
+				$("div.page").hide();
+				$("#" + page).show();
+			},
+			res: function (path) {
+				$("#page4 div.photo img").attr('src', path);
+				this.show("page4");
+			},
+			addEvent: function () {
+				var _this = this;
+
+
+				$("#page2 a.btn").click(function (e) {
+					e.preventDefault();
+					_this.show("page3");
+				});
+				$("#page4 a.btn1").click(function (e) {
+					e.preventDefault();
+					//重新上传
+					_this.show("page3");
+				});
+				$("#page4 a.btn2").click(function (e) {
+					e.preventDefault();
+					//重新上传
+					alert("长按图片保存你的专属宣誓照片，分享到朋友圈吧");
+				});
+			}
+		};
+
+
+		//var bgm = document.getElementById("bgmusic"); 
+
+		//var bgm_nv = document.getElementById("nvmusic"); 
+		//document.addEventListener("WeixinJSBridgeReady", function () {  
+		//bgm.play();  
+
+		//}, false);
+		BgMusicCompt.init();
+		StageCtl.init();
+		BgMusicCompt.mute();
+	</script>
+	<script type="text/javascript" src="//res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+	<script type="text/javascript" src="javascripts/app.js"></script>
+	<script type="text/javascript">
+		BgMusicCompt.mute()
+		initWx()
+
+	</script>
+	<script type="text/javascript" src="javascripts/layer.js"></script>
+	<script type="text/javascript" src="javascripts/main.js"></script>
+
+
+</body>
+
+</html>

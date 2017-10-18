@@ -1,0 +1,39 @@
+
+
+/*------dzwww-------------------------------------------------------------------------------*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video { margin: 0; padding: 0; border: 0; outline: 0 }
+article, aside, footer, header, hgroup, nav, section, audio, canvas, video, img , details, figcaption, figure{display: block; clear: both }
+html * { outline: 0; -webkit-text-size-adjust: none; -webkit-tap-highlight-color: rgba(0,0,0,0) }
+body { font-size: 100%; font-family: 'Microsoft YaHei', arial, helvetica, sans-serif;  -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%;  color: #000; min-width:320px; }
+table { border-collapse: collapse; border-spacing: 0 }
+a:hover { text-decoration: underline }
+ins, a,a:hover{ text-decoration: none }
+iframe, img { border: 0; }
+textarea { resize: none; }
+iframe, fieldset, img { border: 0 }
+ul, ol { list-style: none; }
+form { display: inline }
+input, select, button { font-family: 'Microsoft YaHei', arial, helvetica, sans-serif; font-size: 100%; vertical-align: middle; outline: 0 ;-webkit-user-modify: read-write-plaintext-only; }
+button, input[type="button"], input[type="reset"], input[type="submit"] { cursor: pointer; -webkit-appearance: button; -moz-appearance: button }
+input:focus:-moz-placeholder, input:focus::-webkit-input-placeholder {color:transparent}
+button::-moz-focus-inner, input::-moz-focus-inner {padding:0;border:0}
+input { -webkit-appearance: none; }
+
+
+.clear{clear:both;font-size:1px;width:1px;height:0;visibility:hidden;margin-top:0px!important;*margin-top:-1px;line-height:0}
+.clearfix:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
+/* Hides from IE-mac \*/
+* html .clearfix { height: 1%; }
+/* End hide from IE-mac */
+/* ie7 hack*/
+ *+html .clearfix {min-height: 1% ;}
+/*IE/7/6*/
+/*basic*/
+.left { float: left }
+.right { float: right }
+.hide { display: none!important }
+.show { display: block!important }
+.ellipsis { white-space: nowrap; text-overflow: ellipsis; overflow: hidden }
+.break { word-break: break-all; word-wrap: break-word }
+
